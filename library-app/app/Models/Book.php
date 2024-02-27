@@ -13,4 +13,8 @@ class Book extends Model
     public function libraries(): BelongsToMany {
         return $this->belongsToMany(Library::class);
     }
+
+    public $timestamps = true;
+
+    protected $fillable = ['title', 'createdAt'];
 }

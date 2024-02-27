@@ -34,18 +34,18 @@ Route::get('/libraries', [LibraryController::class, 'getLibraries'])->name('libr
 
 Route::get('/libraries/{library_id}', [LibraryController::class, 'getLibrary']);
 
-Route::middleware('admin')->group(function () {
-    Route::post('/libraries', [LibraryController::class, 'addLibrary'])->name('addLibrary');
-    Route::patch('/libraries', [LibraryController::class, 'editLibrary'])->name('editLibrary');
-    Route::delete('/libraries', [LibraryController::class, 'deleteLibrary'])->name('deleteLibrary');
-});
-
-Route::get('/books', [BookController::class, 'getBooks']);
+Route::get('/books', [BookController::class, 'getBooks'])->name('books');
 
 Route::get('/books/{book_id}', [BookController::class, 'getBook']);
 
-Route::get('/bookcrud', function () {
-    return view('bookcrud');
+Route::middleware('admin')->group(function () {
+    Route::post('/libraries', [LibraryController::class, 'addLibrary'])->name('addLibrary');
+    Route::put('/libraries/{library_id}', [LibraryController::class, 'editLibrary'])->name('editLibrary');
+    Route::delete('/libraries', [LibraryController::class, 'deleteLibrary'])->name('deleteLibrary');
+    
+    Route::post('/books', [BookController::class, 'addBook'])->name('addBook');
+    Route::put('/books/{book_id}', [BookController::class, 'editBook'])->name('editBook');
+    Route::delete('/books', [BookController::class, 'deleteBook'])->name('deleteBook');
 });
 
 require __DIR__.'/auth.php';
