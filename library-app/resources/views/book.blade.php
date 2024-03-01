@@ -6,9 +6,6 @@
         <li>
             <a href='{{ route("books") }}'>Books</a>
         </li>
-        <li>
-            <a href='bookcrud'>Book CRUD</a>
-        </li>
     </ul>
 </nav>
 
